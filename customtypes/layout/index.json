@@ -1,0 +1,118 @@
+{
+  "id": "layout",
+  "label": "layout",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "logo": {
+        "type": "Image",
+        "config": {
+          "label": "Logo",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "websiteName": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Website Name",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "links": {
+        "type": "Group",
+        "config": {
+          "label": "Links",
+          "fields": {
+            "linkLabel": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Link Label",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+              }
+            },
+            "linkURL": {
+              "type": "Text",
+              "config": {
+                "label": "Link URL",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "locales": {
+        "type": "Group",
+        "config": {
+          "label": "Locales",
+          "fields": {
+            "locale": {
+              "type": "Text",
+              "config": {
+                "label": "Locale",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "footerID": {
+        "type": "Text",
+        "config": {
+          "label": "Footer ID",
+          "placeholder": ""
+        }
+      },
+      "footerTitle": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Footer Title",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "heading1"
+        }
+      },
+      "footerPhoneOne": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Footer Phone One",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "paragraph"
+        }
+      },
+      "footerPhoneTwo": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Footer Phone Two",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "paragraph"
+        }
+      },
+      "footerEmail": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Footer Email",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "paragraph"
+        }
+      },
+      "footerWebsite": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Footer Website",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "paragraph"
+        }
+      }
+    }
+  }
+}
