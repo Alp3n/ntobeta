@@ -8,12 +8,12 @@ import FullWidthDefault from './default';
 import FullWidthWithImage from './with-image';
 import FullWidthCallToAction from './call-to-action';
 
-const FullWidth = ({ slice }) => {
+const FullWidth = ({ slice, context }) => {
   switch (slice.variation) {
     case 'withImage':
       return <FullWidthWithImage slice={slice} />;
     case 'callToAction':
-      return <FullWidthCallToAction slice={slice} />;
+      return <FullWidthCallToAction slice={slice} context={context} />;
     case 'default':
       return <FullWidthDefault slice={slice} />;
   }

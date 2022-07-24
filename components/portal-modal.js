@@ -66,7 +66,6 @@ const Backdrop = styled.div`
   width: 100%;
   height: 100%;
   background-color: rgba(51, 51, 51, 0.3);
-
   opacity: 0;
   transition: all 100ms cubic-bezier(0.4, 0, 0.2, 1);
   transition-delay: 200ms;
@@ -74,6 +73,7 @@ const Backdrop = styled.div`
   align-items: center;
   justify-content: center;
   z-index: 3;
+
   @media only screen and (max-width: 1102px) {
     bottom: 0;
     top: 0;
@@ -106,18 +106,12 @@ const Content = styled.div`
   position: relative;
   box-sizing: border-box;
   min-height: 50px;
-  max-height: 95%;
-  width: 100%;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  background-color: white;
+  max-height: 100%;
+  min-width: 70%;
   overflow-y: auto;
-  padding: 5%;
 
-  @media only screen and (min-width: 1102px) {
-    padding: 5% 5% 2.5% 5%;
-    /* min-height: calc(auto + 5%); */
-    min-width: 80%;
-    max-height: 80%;
+  @media only screen and (min-width: 1180px) {
     max-width: 90%;
+    max-height: 90%;
   }
 `;

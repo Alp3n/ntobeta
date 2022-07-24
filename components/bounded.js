@@ -17,13 +17,12 @@ const StyledDiv = styled.div`
   margin-bottom: ${({ margin }) => (margin ? '100px' : null)};
   scroll-margin-top: 100px;
 
-  @media only screen and (min-width: 1240px) {
-    max-width: 1152px;
-    margin-bottom: ${({ margin }) => (margin ? '250px' : null)};
-    scroll-margin-top: 400px;
+  @media only screen and (min-width: 1180px) {
+    max-width: 1180px;
   }
-  @media only screen and (min-width: 1540px) {
-    max-width: 1352px;
+  @media only screen and (min-width: 1240px) {
+    margin-bottom: ${({ margin }) => (margin ? '250px' : null)};
+    scroll-margin-top: 90px;
   }
 `;
 

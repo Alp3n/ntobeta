@@ -6,21 +6,32 @@ import Bounded from '../../components/bounded';
 import Image from '../../components/image';
 
 const FullWidthWithImage = ({ slice }) => {
-  console.log(slice);
   const backgroundImage = slice.primary.backgroundImage;
+  // const foregroundImage = slice.primary.topImage;
   return (
     <StyledSection>
       <StyledBounded id={`${slice.primary.sliceID}`}>
-        {slice.variation === 'withImage' ? (
-          <StyledTopImage></StyledTopImage>
-        ) : null}
         <PrismicRichText
           field={slice.primary.title}
           components={{
             heading1: ({ children }) => <StyledTitle>{children}</StyledTitle>,
           }}
         />
+        {/* {slice.variation === 'withImage' ? (
+          <StyledTopImage>
+            <StyledImage
+              src={prismicH.asImageSrc(foregroundImage)}
+              width={foregroundImage.dimensions.width}
+              height={foregroundImage.dimensions.height}
+              alt=''
+              layout='responsive'
+              quality={100}
+              priority
+            />
+          </StyledTopImage>
+        ) : null} */}
       </StyledBounded>
+
       {prismicH.isFilled.image(backgroundImage) ? (
         <StyledImage
           src={prismicH.asImageSrc(backgroundImage, {
@@ -53,12 +64,13 @@ const StyledSection = styled.section`
     height: 300px;
   }
   @media only screen and (max-width: 639px) {
+    grid-template-areas:
+      /* 'image' */ 'title';
     span {
       height: 300px;
     }
   }
   @media only screen and (min-width: 640px) {
-    /* padding: 3rem 0; */
     height: 580px;
     margin-bottom: 100px;
   }
@@ -82,6 +94,7 @@ const StyledTopImage = styled.div`
 
 const StyledBounded = styled(Bounded)`
   z-index: 1;
+  grid-area: image;
   div.innerDiv {
     padding: 64px 0;
     display: grid;
@@ -97,7 +110,7 @@ const StyledBounded = styled(Bounded)`
 
       grid-template-areas: 'title image';
       h1 {
-        font-size: 70px;
+        font-size: 62px;
         width: 85%;
       }
     }

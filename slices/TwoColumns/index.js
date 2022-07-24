@@ -3,29 +3,30 @@ import styled from '@emotion/styled';
 import { PrismicRichText } from '@prismicio/react';
 import * as prismicH from '@prismicio/helpers';
 import PortalModal from '../../components/portal-modal';
-import MyModal from '../../components/modal';
+import ProductModal from '../../components/product-modal';
 import Bounded from '../../components/bounded';
 
 const TwoColumns = ({ slice, context }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
-  console.log(context);
+
   const openModal = (item) => {
     setSelectedItem(item);
     setModalIsOpen(true);
   };
 
   const nextItem = () => {
-    let currentItem = context.indexOf(selectedItem);
-    if (currentItem === context.length - 1) return;
-    setSelectedItem(context[currentItem + 1]);
+    let currentItem = context.products.indexOf(selectedItem);
+    if (currentItem === context.products.length - 1) return;
+    setSelectedItem(context.products[currentItem + 1]);
   };
 
   const previouseItem = () => {
-    let currentItem = context.indexOf(selectedItem);
+    let currentItem = context.products.indexOf(selectedItem);
     if (currentItem === 0) return;
-    setSelectedItem(context[currentItem - 1]);
+    setSelectedItem(context.products[currentItem - 1]);
   };
+
   return (
     <>
       <StyledBounded as='section' id={`${slice.primary.sliceID}`}>
@@ -49,8 +50,8 @@ const TwoColumns = ({ slice, context }) => {
           </StyledGrid>
         </StyledLeftColumn>
         <StyledRightColumn>
-          {prismicH.isFilled.group(context)
-            ? context.map((item) => (
+          {prismicH.isFilled.group(context.products)
+            ? context.products.map((item) => (
                 <StyledProduct key={item.uid} onClick={() => openModal(item)}>
                   <PrismicRichText
                     field={item.data.productName}
@@ -69,7 +70,7 @@ const TwoColumns = ({ slice, context }) => {
         </StyledRightColumn>
       </StyledBounded>
       <PortalModal open={modalIsOpen} onClose={() => setModalIsOpen(false)}>
-        <MyModal
+        <ProductModal
           setIsOpen={setModalIsOpen}
           item={selectedItem}
           nextItem={nextItem}
@@ -99,10 +100,11 @@ const StyledBounded = styled(Bounded)`
 `;
 
 const StyledTitle = styled.h1`
-  margin-bottom: 44px;
+  margin-bottom: 30px;
   font-size: 38px;
+  text-transform: uppercase;
   @media only screen and (min-width: 640px) {
-    font-size: 80px;
+    font-size: 60px;
   }
 `;
 
@@ -153,7 +155,7 @@ const StyledProduct = styled.div`
     grid-template-columns: 85% 1fr 38px;
     p {
       grid-area: name;
-      font-size: 28px;
+      /* font-size: 22px; */
       line-height: 42px;
       width: 80%;
     }

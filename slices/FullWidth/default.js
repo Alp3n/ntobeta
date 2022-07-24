@@ -6,7 +6,6 @@ import Bounded from '../../components/bounded';
 import Image from '../../components/image';
 
 const FullWidthDefault = ({ slice }) => {
-  console.log(slice);
   const backgroundImage = slice.primary.backgroundImage;
   return (
     <StyledSection>

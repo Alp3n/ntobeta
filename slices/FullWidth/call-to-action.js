@@ -1,46 +1,78 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import * as prismicH from '@prismicio/helpers';
 import { PrismicRichText } from '@prismicio/react';
 import Bounded from '../../components/bounded';
 import Image from '../../components/image';
+import PortalModal from '../../components/portal-modal';
+import AlbumModal from '../../components/album-modal';
 
-const FullWidthCallToAction = ({ slice }) => {
-  console.log(slice);
+const FullWidthCallToAction = ({ slice, context }) => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [items, setItems] = useState(() => context?.album?.data?.album);
+  const openModal = (item) => {
+    setSelectedItem(item);
+    setModalIsOpen(true);
+  };
+
+  const nextItem = () => {
+    let currentItem = items.indexOf(selectedItem);
+    if (currentItem === items.length - 1) return;
+    setSelectedItem(items[currentItem + 1]);
+  };
+
+  const previouseItem = () => {
+    let currentItem = items.indexOf(selectedItem);
+    if (currentItem === 0) return;
+    setSelectedItem(items[currentItem - 1]);
+  };
+
   const backgroundImage = slice.primary.backgroundImage;
   return (
-    <StyledSection>
-      <StyledBounded id={`${slice.primary.sliceID}`}>
-        <PrismicRichText
-          field={slice.primary.title}
-          components={{
-            heading1: ({ children }) => <h1>{children}</h1>,
-          }}
+    <>
+      <StyledSection>
+        <StyledBounded id={`${slice.primary.sliceID}`}>
+          <PrismicRichText
+            field={slice.primary.title}
+            components={{
+              heading1: ({ children }) => <h1>{children}</h1>,
+            }}
+          />
+          <PrismicRichText
+            field={slice.primary.description}
+            components={{
+              paragraph: ({ children }) => (
+                <StyledDescription>{children}</StyledDescription>
+              ),
+            }}
+          />
+          <StyledButton onClick={() => openModal(items[0])}>
+            {slice.primary.buttonLabel}
+          </StyledButton>
+        </StyledBounded>
+        {prismicH.isFilled.image(backgroundImage) ? (
+          <StyledImage
+            src={prismicH.asImageSrc(backgroundImage, {
+              w: undefined,
+              h: undefined,
+            })}
+            alt=''
+            layout='fill'
+            quality={85}
+          />
+        ) : null}
+      </StyledSection>
+
+      <PortalModal open={modalIsOpen} onClose={() => setModalIsOpen(false)}>
+        <AlbumModal
+          setIsOpen={setModalIsOpen}
+          item={selectedItem}
+          nextItem={nextItem}
+          previouseItem={previouseItem}
         />
-        <PrismicRichText
-          field={slice.primary.description}
-          components={{
-            paragraph: ({ children }) => (
-              <StyledDescription>{children}</StyledDescription>
-            ),
-          }}
-        />
-        <StyledButton onClick={() => console.log('Hello world!')}>
-          {slice.primary.buttonLabel}
-        </StyledButton>
-      </StyledBounded>
-      {prismicH.isFilled.image(backgroundImage) ? (
-        <StyledImage
-          src={prismicH.asImageSrc(backgroundImage, {
-            w: undefined,
-            h: undefined,
-          })}
-          alt=''
-          layout='fill'
-          quality={85}
-        />
-      ) : null}
-    </StyledSection>
+      </PortalModal>
+    </>
   );
 };
 
@@ -53,6 +85,7 @@ const StyledSection = styled.section`
   height: auto;
 
   h1 {
+    text-transform: uppercase;
     font-size: 34px;
     font-weight: 300;
     color: white;

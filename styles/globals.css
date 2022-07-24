@@ -1,3 +1,4 @@
+@import 'flag-icons/css/flag-icons.css';
 html,
 body {
   padding: 0;
@@ -32,10 +33,28 @@ p,
 span {
   font-size: 22px;
 }
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
 
+li {
+  list-style: none;
+}
 @media only screen and (max-width: 640px) {
   p,
   span {
     font-size: 18px;
+  }
+
+  .visible {
+    display: none;
   }
 }
