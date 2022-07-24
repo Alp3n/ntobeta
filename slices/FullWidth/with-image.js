@@ -8,6 +8,7 @@ import Image from '../../components/image';
 const FullWidthWithImage = ({ slice }) => {
   const backgroundImage = slice.primary.backgroundImage;
   // const foregroundImage = slice.primary.topImage;
+  console.log(backgroundImage.mobile);
   return (
     <StyledSection>
       <StyledBounded id={`${slice.primary.sliceID}`}>
@@ -32,7 +33,21 @@ const FullWidthWithImage = ({ slice }) => {
         ) : null} */}
       </StyledBounded>
 
-      {prismicH.isFilled.image(backgroundImage) ? (
+      <StyledMobileImage>
+        <StyledImage
+          src={prismicH.asImageSrc(backgroundImage.mobile, {
+            w: undefined,
+            h: undefined,
+          })}
+          alt=''
+          layout='responsive'
+          width={backgroundImage.mobile.dimensions.width}
+          height={backgroundImage.mobile.dimensions.height}
+          quality={85}
+          priority
+        />
+      </StyledMobileImage>
+      <StyledDesktopImage>
         <StyledImage
           src={prismicH.asImageSrc(backgroundImage, {
             w: undefined,
@@ -43,7 +58,7 @@ const FullWidthWithImage = ({ slice }) => {
           quality={85}
           priority
         />
-      ) : null}
+      </StyledDesktopImage>
     </StyledSection>
   );
 };
@@ -54,7 +69,7 @@ const StyledSection = styled.section`
   position: relative;
   display: grid;
   place-content: center;
-  height: 80vh;
+  /* height: 80vh; */
   margin-bottom: 64px;
   h1 {
     font-size: 34px;
@@ -63,14 +78,15 @@ const StyledSection = styled.section`
   span {
     height: 300px;
   }
-  @media only screen and (max-width: 639px) {
+  @media only screen and (max-width: 640px) {
     grid-template-areas:
-      /* 'image' */ 'title';
+      'image'
+      'title';
     span {
       height: 300px;
     }
   }
-  @media only screen and (min-width: 640px) {
+  @media only screen and (min-width: 641px) {
     height: 580px;
     margin-bottom: 100px;
   }
@@ -85,18 +101,32 @@ const StyledImage = styled(Image)`
   pointer-events: none;
   user-select: none;
   z-index: -1;
-  /* height: 290px; */
 `;
 
 const StyledTopImage = styled.div`
   height: 300px;
 `;
 
+const StyledMobileImage = styled.div`
+  display: none;
+  @media only screen and (max-width: 640px) {
+    display: block;
+    grid-area: image;
+  }
+`;
+
+const StyledDesktopImage = styled.div`
+  display: none;
+  @media only screen and (min-width: 641px) {
+    display: block;
+  }
+`;
+
 const StyledBounded = styled(Bounded)`
   z-index: 1;
-  grid-area: image;
+  grid-area: title;
   div.innerDiv {
-    padding: 64px 0;
+    padding: 22px 0;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-areas:
@@ -107,7 +137,6 @@ const StyledBounded = styled(Bounded)`
     div.innerDiv {
       grid-template-columns: 1fr 1fr;
       padding: 150px 0;
-
       grid-template-areas: 'title image';
       h1 {
         font-size: 62px;
@@ -119,4 +148,5 @@ const StyledBounded = styled(Bounded)`
 
 const StyledTitle = styled.h1`
   grid-area: title;
+  color: #1a2c42;
 `;

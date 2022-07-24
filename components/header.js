@@ -147,7 +147,8 @@ const StyledLink = styled.a`
     :hover {
       p {
         padding-bottom: 31px;
-        border-bottom: 3px solid #2e4f78;
+        border-bottom: 4px solid #2e4f78;
+        color: #5d7694;
       }
     }
   }

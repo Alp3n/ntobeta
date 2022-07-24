@@ -77,7 +77,13 @@
           "config": {
             "label": "Background Image",
             "constraint": {},
-            "thumbnails": []
+            "thumbnails": [
+              {
+                "name": "mobile",
+                "width": 1280,
+                "height": 1280
+              }
+            ]
           }
         },
         "topImage": {

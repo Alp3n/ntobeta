@@ -52,6 +52,7 @@ const StyledContent = styled.div`
     border-bottom: 1px solid #707070;
     padding-bottom: 32px;
     margin: unset;
+    margin-bottom: 1rem;
   }
 `;
 

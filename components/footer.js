@@ -54,6 +54,9 @@ const StyledGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   gap: 22px;
+  p {
+    color: #1a2c42;
+  }
   > :hover p {
     color: #2e4f78;
     opacity: 0.8;

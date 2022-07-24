@@ -105,6 +105,7 @@ const StyledTitle = styled.h1`
   text-transform: uppercase;
   @media only screen and (min-width: 640px) {
     font-size: 60px;
+    line-height: 60px;
   }
 `;
 
@@ -119,6 +120,9 @@ const StyledGrid = styled.div`
 `;
 const StyledLeftColumn = styled.div`
   line-height: 30px;
+  p {
+    color: #1a2c42;
+  }
   @media only screen and (min-width: 640px) {
     line-height: 35px;
   }
@@ -140,6 +144,7 @@ const StyledProduct = styled.div`
   grid-template-areas: 'name . arrow';
   p {
     line-height: 28px;
+    color: #1a2c42;
   }
   &:hover p.name {
     cursor: pointer;
