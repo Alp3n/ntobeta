@@ -2,10 +2,15 @@ import { SliceZone } from '@prismicio/react';
 import { createClient } from '../prismicio';
 import { components } from '../slices/';
 import Layout from '../components/layout';
+import SEO from '../components/SEO';
 
 export default function Home({ page, layout, products, album, doc }) {
   return (
     <Layout layout={layout} alternateLanguages={page.alternate_languages}>
+      <SEO
+        metaDescription={page.data.metaDescription}
+        metaTitle={page.data.metaTitle}
+      />
       <SliceZone
         slices={page.data.slices}
         components={components}
