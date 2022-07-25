@@ -13,7 +13,6 @@ export default function Header({ header, alternateLanguages = [] }) {
     if (isOpen === 'open') setOpen('closed');
     if (isOpen === 'closed') setOpen('open');
   };
-
   return (
     <>
       <StyledBounded as='header'>
@@ -40,14 +39,16 @@ export default function Header({ header, alternateLanguages = [] }) {
             ))}
           </StyledUL>
         </StyledNav>
-        <StyledLogo href={``}>
-          <Image
-            src={header.logo.url}
-            layout='fill'
-            alt={header.logo.altText}
-          />
+        <StyledLogoWrapper href={``}>
+          <StyledLogo>
+            <Image
+              src={header.logo.url}
+              layout='fill'
+              alt={header.logo.altText}
+            />
+          </StyledLogo>
           <PrismicRichText field={header.websiteName} />
-        </StyledLogo>
+        </StyledLogoWrapper>
         <MenuButton onClick={handleMenu} className={isOpen}>
           <span />
           <span />
@@ -154,22 +155,35 @@ const StyledLink = styled.a`
   }
 `;
 
-const StyledLogo = styled.a`
+const StyledLogoWrapper = styled.a`
   position: relative;
-  display: flex;
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  align-items: center;
   grid-area: logo;
+  gap: 1rem;
+
+  p {
+    display: none;
+    font-weight: 400;
+  }
+  @media only screen and (min-width: 1102px) {
+    grid-template-columns: 42px 1fr;
+    p {
+      display: block;
+      font-weight: 400;
+    }
+  }
+`;
+const StyledLogo = styled.div`
+  position: relative;
+  /* display: flex; */
   width: 36px;
   height: 36px;
-  > p {
-    display: none;
-  }
 
   @media only screen and (min-width: 1102px) {
     width: 42px;
-    height: 40px;
-    > p {
-      font-size: 45px;
-    }
+    height: 42px;
   }
 `;
 

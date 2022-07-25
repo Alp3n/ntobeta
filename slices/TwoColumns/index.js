@@ -17,14 +17,16 @@ const TwoColumns = ({ slice, context }) => {
 
   const nextItem = () => {
     let currentItem = context.products.indexOf(selectedItem);
-    if (currentItem === context.products.length - 1) return;
-    setSelectedItem(context.products[currentItem + 1]);
+    if (currentItem === context.products.length - 1) {
+      setSelectedItem(context.products[0]);
+    } else setSelectedItem(context.products[currentItem + 1]);
   };
 
   const previouseItem = () => {
     let currentItem = context.products.indexOf(selectedItem);
-    if (currentItem === 0) return;
-    setSelectedItem(context.products[currentItem - 1]);
+    if (currentItem === 0) {
+      setSelectedItem(context.products[context.products.length - 1]);
+    } else setSelectedItem(context.products[currentItem - 1]);
   };
 
   return (
@@ -62,7 +64,15 @@ const TwoColumns = ({ slice, context }) => {
                     }}
                   />
                   <StyledArrowBox>
-                    <StyledArrow>{`>`}</StyledArrow>
+                    <svg
+                      width='24'
+                      height='24'
+                      xmlns='http://www.w3.org/2000/svg'
+                      fillRule='evenodd'
+                      clipRule='evenodd'
+                    >
+                      <path d='M4 .755l14.374 11.245-14.374 11.219.619.781 15.381-12-15.391-12-.609.755z' />
+                    </svg>
                   </StyledArrowBox>
                 </StyledProduct>
               ))
@@ -142,7 +152,7 @@ const StyledProduct = styled.div`
   display: grid;
   grid-template-columns: 90% 1fr 28px;
   grid-template-areas: 'name . arrow';
-  p {
+  p.name {
     line-height: 28px;
     color: #1a2c42;
   }
@@ -174,18 +184,18 @@ const StyledArrowBox = styled.div`
   height: 28px;
   background-color: #2e4f78;
   grid-area: arrow;
-  @media only screen and (min-width: 640px) {
-    height: 38px;
-  }
-`;
+  padding: 6px;
 
-const StyledArrow = styled.p`
-  font-weight: 800;
-  color: white;
+  svg {
+    transform: scale(0.5);
+  }
+  svg > path {
+    stroke: white;
+  }
   @media only screen and (min-width: 640px) {
-    p {
-      font-size: 32px;
-      width: 80%;
+    svg {
+      transform: scale(0.7);
     }
+    height: 38px;
   }
 `;

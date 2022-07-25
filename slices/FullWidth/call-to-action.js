@@ -18,14 +18,16 @@ const FullWidthCallToAction = ({ slice, context }) => {
 
   const nextItem = () => {
     let currentItem = items.indexOf(selectedItem);
-    if (currentItem === items.length - 1) return;
-    setSelectedItem(items[currentItem + 1]);
+    if (currentItem === items.length - 1) {
+      setSelectedItem(items[0]);
+    } else setSelectedItem(items[currentItem + 1]);
   };
 
   const previouseItem = () => {
     let currentItem = items.indexOf(selectedItem);
-    if (currentItem === 0) return;
-    setSelectedItem(items[currentItem - 1]);
+    if (currentItem === 0) {
+      setSelectedItem(items[items.length - 1]);
+    } else setSelectedItem(items[currentItem - 1]);
   };
 
   const backgroundImage = slice.primary.backgroundImage;

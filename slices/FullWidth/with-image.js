@@ -8,7 +8,7 @@ import Image from '../../components/image';
 const FullWidthWithImage = ({ slice }) => {
   const backgroundImage = slice.primary.backgroundImage;
   // const foregroundImage = slice.primary.topImage;
-  console.log(backgroundImage.mobile);
+
   return (
     <StyledSection>
       <StyledBounded id={`${slice.primary.sliceID}`}>

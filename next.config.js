@@ -6,7 +6,7 @@ const nextConfig = async () => {
   const client = prismic.createClient(sm.apiEndpoint);
   const repository = await client.getRepository();
   const locales = repository.languages.map((lang) => lang.id);
-  console.log(locales);
+
   return {
     reactStrictMode: true,
     i18n: {

@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import Image from './image';
 
 const AlbumModal = ({ setIsOpen, item, nextItem, previouseItem }) => {
-  console.log(item);
+
   if (!item) return null;
   return (
     <ModalWrapper
