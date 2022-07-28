@@ -31,6 +31,7 @@ const FullWidthCallToAction = ({ slice, context }) => {
   };
 
   const backgroundImage = slice.primary.backgroundImage;
+
   return (
     <>
       <StyledSection>

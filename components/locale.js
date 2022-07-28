@@ -1,7 +1,7 @@
 const Locale = ({ lang }) => {
-  const code = lang.substring(3).toLowerCase();
+  const code = lang.slice(0, 2).toUpperCase();
 
-  return <span className={`fi fi-${code}`} />;
+  return <span>{code === 'UK' ? 'UKR' : 'ENG'}</span>;
 };
 
 export default Locale;

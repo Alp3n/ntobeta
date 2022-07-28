@@ -1,7 +1,7 @@
 import '../styles/globals.css';
 import Link from 'next/link';
 import { PrismicProvider } from '@prismicio/react';
-import { linkResolver, repositoryName } from '../prismicio';
+import { linkResolver } from '../prismicio';
 
 export default function App({ Component, pageProps }) {
   return (
@@ -13,9 +13,7 @@ export default function App({ Component, pageProps }) {
         </Link>
       )}
     >
-      {/* <PrismicPreview repositoryName={repositoryName}> */}
       <Component {...pageProps} />
-      {/* </PrismicPreview> */}
     </PrismicProvider>
   );
 }

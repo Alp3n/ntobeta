@@ -29,6 +29,8 @@ const TwoColumns = ({ slice, context }) => {
     } else setSelectedItem(context.products[currentItem - 1]);
   };
 
+  const sortItems = (a, b) => (a.data.order > b.data.order ? 1 : -1);
+
   return (
     <>
       <StyledBounded as='section' id={`${slice.primary.sliceID}`}>
@@ -53,7 +55,7 @@ const TwoColumns = ({ slice, context }) => {
         </StyledLeftColumn>
         <StyledRightColumn>
           {prismicH.isFilled.group(context.products)
-            ? context.products.map((item) => (
+            ? context.products.sort(sortItems).map((item) => (
                 <StyledProduct key={item.uid} onClick={() => openModal(item)}>
                   <PrismicRichText
                     field={item.data.productName}

@@ -1,10 +1,10 @@
 import { PrismicRichText } from '@prismicio/react';
+import * as prismicH from '@prismicio/helpers';
 import ModalWrapper from './modal-wrapper';
 import styled from '@emotion/styled';
 import Image from './image';
-
 const AlbumModal = ({ setIsOpen, item, nextItem, previouseItem }) => {
-
+  console.log(item);
   if (!item) return null;
   return (
     <ModalWrapper
@@ -14,7 +14,7 @@ const AlbumModal = ({ setIsOpen, item, nextItem, previouseItem }) => {
       previouseItem={previouseItem}
     >
       <StyledContent>
-        <StyledImage>
+        {/* <StyledImage>
           <Image
             src={item.image.url}
             alt={item.image.alt}
@@ -23,7 +23,35 @@ const AlbumModal = ({ setIsOpen, item, nextItem, previouseItem }) => {
             height={item.image.dimensions.height}
             quality={100}
           />
-        </StyledImage>
+        </StyledImage> */}
+        <StyledMobileImage>
+          <Image
+            src={prismicH.asImageSrc(item.image.mobile, {
+              w: undefined,
+              h: undefined,
+            })}
+            alt={item.image.alt}
+            layout='responsive'
+            width={item.image.mobile.dimensions.width}
+            height={item.image.mobile.dimensions.height}
+            quality={85}
+            priority
+          />
+        </StyledMobileImage>
+        <StyledDesktopImage>
+          <Image
+            src={prismicH.asImageSrc(item.image, {
+              w: undefined,
+              h: undefined,
+            })}
+            alt={item.image.alt}
+            width={item.image.dimensions.width}
+            height={item.image.dimensions.height}
+            layout='responsive'
+            quality={85}
+            priority
+          />
+        </StyledDesktopImage>
         <PrismicRichText
           field={item.description}
           components={{
@@ -44,9 +72,10 @@ const StyledContent = styled.div`
   flex-direction: column;
   border: 1px solid #707070;
   padding: 5%;
-  margin: 50% 0;
-  margin-bottom: 50px;
+  margin-top: 25%;
+  /* margin-bottom: 50px; */
   @media only screen and (min-width: 640px) {
+    padding: unset;
     text-align: center;
     border: unset;
     border-bottom: 1px solid #707070;
@@ -58,26 +87,45 @@ const StyledContent = styled.div`
 
 const StyledDescription = styled.p`
   grid-area: description;
-  width: 90%;
   color: #1a2c42;
   @media only screen and (min-width: 640px) {
     font-size: 22px;
-    width: 100%;
+    height: 56px;
   }
 `;
 
-const StyledImage = styled.div`
-  grid-area: image;
-  width: 100%;
-  margin-bottom: 44px;
+// const StyledImage = styled.div`
+//   grid-area: image;
+//   /* width: 100%; */
+//   margin-bottom: 44px;
+//   min-width: 60vw;
+//   /* max-width: 1100px; */
+//
+// `;
 
-  > span {
-    object-fit: cover;
+const StyledImage = styled(Image)`
+  /* width: 100%; */
+
+  /* min-width: 60vw; */
+  /* max-width: 1100px; */
+`;
+
+const StyledMobileImage = styled.div`
+  display: none;
+  @media only screen and (max-width: 640px) {
+    grid-area: image;
+    display: block;
+    margin-bottom: 44px;
+    min-width: 60vw;
   }
+`;
 
-  @media only screen and (min-width: 1102px) {
-    > span {
-      /* min-width: 600px; */
-    }
+const StyledDesktopImage = styled.div`
+  display: none;
+  @media only screen and (min-width: 641px) {
+    grid-area: image;
+    display: block;
+    min-width: 60vw;
+    margin-bottom: 44px;
   }
 `;

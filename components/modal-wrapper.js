@@ -76,7 +76,7 @@ const StyledModalWrapper = styled.div`
 
   @media only screen and (min-width: 1102px) {
     gap: 1rem;
-    grid-template-columns: 1fr 96px;
+    grid-template-columns: 1fr 60px;
     grid-template-areas: 'body desktopCloseButton';
   }
 `;
@@ -86,11 +86,17 @@ const ModalBody = styled.div`
   grid-area: body;
   padding: 5%;
   height: 100vh;
+  /* width: 100vw; */
+  @media only screen and (max-width: 1101px) {
+    min-width: 100vw;
+  }
+
   @media only screen and (min-width: 1102px) {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     border: 1px solid #707070;
     padding: 5% 5% 1% 5%;
     height: unset;
+    min-width: 70vw;
   }
 `;
 

@@ -56,13 +56,16 @@ const StyledContent = styled.div`
   gap: 1rem;
   grid-area: body;
   padding: 5%;
-  /* margin-bottom: 60px; */
   border: 1px solid #707070;
-
+  background-color: white;
+  @media only screen and (max-width: 1101px) {
+    padding-bottom: 15%;
+    margin-bottom: 5%;
+    height: auto;
+  }
   @media only screen and (min-width: 1102px) {
     gap: 2rem;
-    min-height: 500px;
-    min-width: 1000px;
+    padding: unset;
     max-width: 1150px;
     grid-template-columns: clamp(30%, 40%, 50%) 500px;
     grid-template-areas:
@@ -93,11 +96,9 @@ const StyledTitle = styled.span`
 
 const StyledDescription = styled.p`
   grid-area: description;
-  /* width: 70%; */
   color: #1a2c42;
   @media only screen and (min-width: 640px) {
     font-size: 22px;
-    /* width: 60%; */
   }
 `;
 
@@ -112,4 +113,9 @@ const StyledModel = styled.p`
 
 const StyledImage = styled.div`
   grid-area: image;
+  max-width: 400px;
+  /* margin: 0 50%; */
+  @media only screen and (min-width: 1102px) {
+    margin-left: calc(50% - 150px);
+  }
 `;

@@ -107,7 +107,7 @@ const Content = styled.div`
   box-sizing: border-box;
   min-height: 50px;
   max-height: 100%;
-  min-width: 70%;
+  /* min-width: 70%; */
   overflow-y: auto;
 
   @media only screen and (min-width: 1180px) {

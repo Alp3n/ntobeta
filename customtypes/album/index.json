@@ -38,7 +38,13 @@
               "config": {
                 "label": "Image",
                 "constraint": {},
-                "thumbnails": []
+                "thumbnails": [
+                  {
+                    "name": "mobile",
+                    "width": 900,
+                    "height": 900
+                  }
+                ]
               }
             }
           }

@@ -32,7 +32,6 @@ export default function Header({ header, alternateLanguages = [] }) {
                   locale={lang.lang}
                   target='_self'
                 >
-                  <span className='sr-only'>{lang.lang}</span>
                   <Locale lang={lang.lang} />
                 </PrismicLink>
               </li>
@@ -73,7 +72,6 @@ export default function Header({ header, alternateLanguages = [] }) {
               locale={lang.lang}
               target='_self'
             >
-              <span className='sr-only'>{lang.lang}</span>
               <Locale lang={lang.lang} />
             </PrismicLink>
           </li>
