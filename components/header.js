@@ -101,7 +101,7 @@ const StyledBounded = styled(Bounded)`
     align-items: center;
     height: 74px;
     z-index: 99;
-    border-bottom: 1px solid #707070;
+    border-bottom: 1px solid #2d4e75;
     @media only screen and (min-width: 1102px) {
       grid-template-columns: 30% 70%;
       grid-template-areas: 'logo nav';
@@ -140,6 +140,7 @@ const StyledUL = styled.ul`
 const StyledLink = styled.a`
   p {
     text-transform: uppercase;
+    font-weight: 400;
   }
 
   @media only screen and (min-width: 1102px) {
@@ -179,10 +180,10 @@ const StyledLogo = styled.div`
   width: 36px;
   height: 36px;
 
-  @media only screen and (min-width: 1102px) {
-    width: 42px;
+  /* @media only screen and (min-width: 1102px) {
+    width: px;
     height: 42px;
-  }
+  } */
 `;
 
 const MenuButton = styled.div`
@@ -211,6 +212,7 @@ const MenuButton = styled.div`
     left: 0;
     transform: rotate(0deg);
     transition: 0.25s ease-in-out;
+    background-color: #2d4e75;
   }
 
   span:nth-of-type(1) {

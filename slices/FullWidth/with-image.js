@@ -148,5 +148,5 @@ const StyledBounded = styled(Bounded)`
 
 const StyledTitle = styled.h1`
   grid-area: title;
-  color: #1a2c42;
+  color: #2d4e75;
 `;
